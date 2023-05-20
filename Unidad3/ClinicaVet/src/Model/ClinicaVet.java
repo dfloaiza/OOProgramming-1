@@ -8,27 +8,22 @@ import java.util.*;
 
 public class ClinicaVet {
 	
-	ArrayList<Especialista> especialistas;
+	ArrayList<String> especialistas;
 	
 		
-	public ArrayList<Especialista> getEspecialistas() {
+	public ArrayList<String> getEspecialistas() {
 		return especialistas;
 	}
 
-	public void setEspecialistas(ArrayList<Especialista> especialistas) {
+	public void setEspecialistas(ArrayList<String> especialistas) {
 		this.especialistas = especialistas;
 	}
 
 	public ClinicaVet()
 	{
-		especialistas = new ArrayList<Especialista>();
+		especialistas = new ArrayList<String>();
 	}
 	
-	public static void main(String args[])
-	{
-		ClinicaVet miClinica = new ClinicaVet();
-		miClinica.CargarEspecialistas("./data/medicos.csv");
-	}
 	
 	/**
 	 * Este método realiza una carga de los especialistas de la 
@@ -41,17 +36,16 @@ public class ClinicaVet {
 		try 
 		{
 			BufferedReader lector = new BufferedReader(new FileReader(filePath));
-			String linea = "", nombre="", especialidad="";
-			String datos[] = new String[2];
+			String linea = "";
+			//String datos[] = new String[2];
 			while( (linea = lector.readLine()) != null)
 			{
 				//linea = lector.readLine().trim();
 				//linea = "traumatologia;Pedro Perez"
-				datos = linea.split(";");
-				
-				especialistas.add(new Especialista(datos[1], datos[0]));
-			
+				//datos = linea.split(";");				
+				especialistas.add(linea);			
 			}
+			lector.close();
 		} 
 		catch (FileNotFoundException e) 
 		{
